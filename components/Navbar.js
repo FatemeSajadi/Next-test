@@ -83,6 +83,7 @@ export default function DrawerAppBar(props) {
               </Button>
             ))}
           </Box>
+          <Divider orientation="vertical" flexItem />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
            
             <FormControl sx={{ m: 1, minWidth: 120 }}>
