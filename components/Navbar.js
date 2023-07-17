@@ -18,15 +18,15 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useState } from 'react'
 
-
-const drawerWidth = 240;
+const drawerWidth = 240
 const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
 
-function DrawerAppBar(props) {
+export default function DrawerAppBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [lan, setLan] = React.useState('');
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [lan, setLan] = useState('');
 
   const handleChange = (event) => {
     setLan(event.target.value);
@@ -224,4 +224,4 @@ DrawerAppBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+
