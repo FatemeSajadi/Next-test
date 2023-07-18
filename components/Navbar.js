@@ -1,4 +1,6 @@
+'use client';
 import * as React from 'react';
+import Login from "./LoginForm";
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,18 +17,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react'
 
 const drawerWidth = 240
 const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
 
 export default function DrawerAppBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [lan, setLan] = useState('');
+  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const [lan, setLan] = React.useState('');
 
   const handleChange = (event) => {
     setLan(event.target.value);
@@ -83,7 +83,7 @@ export default function DrawerAppBar(props) {
               </Button>
             ))}
           </Box>
-          <Divider orientation="vertical" flexItem />
+          <Divider orientation="vertical" variant="middle" flexItem />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
            
             <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -121,98 +121,11 @@ export default function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-        <Box
-            sx={{
-            marginTop: 8,
-            }}
-        >
-            <Grid container>
-            <CssBaseline />
-            <Grid
-                item
-                xs={false}
-                sm={4}
-                md={7}
-            />
-            <Grid
-                item
-                xs={12}
-                sm={8}
-                md={5}
-                component={Paper}
-                elevation={6}
-                square
-            >
-                <Box
-                sx={{
-                    my: 8,
-                    mx: 4,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}
-                >
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
-                <Box
-                    component="form"
-                    noValidate
-                    onSubmit={handleSubmit}
-                    sx={{ mt: 1 }}
-                >
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                    />
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                    />
-                    <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                    >
-                        Sign In
-                    </Button>
-                    <Grid container>
-                    <Grid item xs>
-                        <Link href="#" variant="body2">
-                        Forgot password?
-                        </Link>
-                    </Grid>
-                    <Grid item>
-                        <Link href="#" variant="body2">
-                        {"Don't have an account? Sign Up"}
-                        </Link>
-                    </Grid>
-                    </Grid>
-                </Box>
-                </Box>
-            </Grid>
-            </Grid>
-        </Box>
+      <Box component="main" sx={{ mt:5, p: 3 }}>
+        
+        <Login/>
       </Box>
+    
     </Box>
   );
 }
