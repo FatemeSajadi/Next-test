@@ -57,7 +57,7 @@ export default function DrawerAppBar(props) {
   
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false)
-    const [lan, setLan] = React.useState('');
+    const [lan, setLan] = React.useState('En');
   
     const handleChange = (event) => {
       setLan(event.target.value);
@@ -89,56 +89,57 @@ export default function DrawerAppBar(props) {
     return (
         <>
        
-            <header className='bg-white shadow-sm dark:bg-zinc-700'>
+            <header className='bg-white shadow-sm dark:bg-zinc-900'>
             <Toolbar>
-                <IconButton
+
+              <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
                 sx={{ mr: 2, display: { sm: 'none' } }}
-                >
+              >
                 <MenuIcon />
-                </IconButton>
-                <Typography
+              </IconButton>
+
+              <Typography
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-                >
+              >
                 Logo places
-                
-                </Typography>
-                <Box>
-                {renderThemeChanger()}
-                </Box>
+              </Typography>
 
-                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {/* <Logo /> */}
+              <Box>
+                {renderThemeChanger()}
+              </Box>
+
+              <Box  sx={{ display: { xs: 'none', sm: 'block' } }}>
                 {navItems.map((item) => (
-                    <Button key={item} sx={{ color: '#000' }}>
-                    {item}
-                    </Button>
+                  <Button color="inherit" key={item} >
+                  {item}
+                  </Button>
                 ))}
-                </Box>
-                <Divider orientation="vertical" variant="middle" flexItem />
-                <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                
-                <FormControl sx={{ m: 1, minWidth: 120 }}>
-                    <Select
+              </Box>
+
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              
+                <FormControl  sx={{ m: 1, minWidth: 120 }}>
+                  <Select
                     value={lan}
                     onChange={handleChange}
                     displayEmpty
                     inputProps={{ 'aria-label': 'Without label' }}
-                    >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="En">EN</MenuItem>
-                        <MenuItem value="FA">FA</MenuItem>
-                    </Select>
+                  >
+                    <MenuItem value="En">EN</MenuItem>
+                    <MenuItem value="FA">FA</MenuItem>
+
+                  </Select>
                 </FormControl>
-                
-                </Box>
+              
+              </Box>
             </Toolbar>
             </header>
             <Box component="nav">
