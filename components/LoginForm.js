@@ -19,7 +19,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import {Lock, Email, QrCode2} from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-import { yellow, grey} from '@mui/material/colors';
+import { yellow, grey,white} from '@mui/material/colors';
 import { FcGoogle } from 'react-icons/fc';
 
 
@@ -77,6 +77,7 @@ export default function SignIn() {
             "loginform loginform . qrcode"
             `,
             }}
+            className='bg-zinc-50 dark:bg-zinc-700'
             >
                 <Box sx={{ gridArea: 'header' }}>
                     <Typography component="h1" variant="h5">
