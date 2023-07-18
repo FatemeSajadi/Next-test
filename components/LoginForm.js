@@ -55,10 +55,10 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-        <Container component="main" backgroundColor={grey[300]} >
+        <Container component="main"  >
 
             <Box
-            className="rounded shadow-md mt-4 p-3 md:p-5 
+            className="rounded shadow-md mt-3 p-3 md:p-5 
             bg-zinc-50 dark:bg-zinc-900 grid gap-4"
 
             >

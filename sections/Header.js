@@ -67,7 +67,7 @@ export default function DrawerAppBar(props) {
     };
   
     const drawer = (
-      <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Box className='text-black dark:text-gray-50 dark:bg-zinc-900' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <Typography variant="h6" sx={{ my: 2 }}>
           Logo place
         </Typography>
@@ -122,9 +122,9 @@ export default function DrawerAppBar(props) {
                 ))}
               </Box>
 
-              <Divider orientation="vertical" variant="middle" flexItem />
+              <Divider className='dark:bg-gray-500' orientation="vertical" variant="middle" flexItem />
 
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <Box>
               
                 <FormControl  sx={{ m: 1, minWidth: 120 }}>
                   <Select
@@ -142,8 +142,9 @@ export default function DrawerAppBar(props) {
               </Box>
             </Toolbar>
             </header>
-            <Box component="nav">
+            <header className='bg-white shadow-sm dark:bg-zinc-900'>
             <Drawer
+              className='dark:bg-zinc-900'
                 container={container}
                 variant="temporary"
                 open={mobileOpen}
@@ -158,10 +159,9 @@ export default function DrawerAppBar(props) {
             >
                 {drawer}
             </Drawer>
-            </Box>
+            </header>
             <Box component="main" sx={{ mt:5, p: 3 }}>
-            
-            <Login/>
+              <Login/>
             </Box>
             
       </>
