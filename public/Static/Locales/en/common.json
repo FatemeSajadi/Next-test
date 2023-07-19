@@ -1,0 +1,17 @@
+{
+    "blog":"Blog",
+    "about":"Bout us",
+    "pricing":"Pricing",
+    "products":"Products",
+    "formtitle":"Log in to Iran source",
+    "emaillabel":"Email Address or Username",
+    "passlabel":"Password",
+    "helpertext":"At least 8 caractere",
+    "login":"Log in",
+    "forgot":"Forgot your password?",
+    "google":"Log in with google",
+    "acount":"Don't have an account?",
+    "signup":"Sign Up",
+    "qrcode":"Log in with QR code",
+    "scan":"Scan this code your mobile to login"
+}
