@@ -1,34 +1,35 @@
 'use client';
 import * as React from 'react';
 import Login from "../components/LoginForm";
-
 import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import {
+  Box,
+  Divider, 
+  Drawer, 
+  IconButton, 
+  List, 
+  ListItem, 
+  ListItemButton, 
+  ListItemText, 
+  Toolbar,
+  Typography,
+  Button,
+  MenuItem,
+  FormControl,
+  Select
+ } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Logo from "../components/Logo";
 import {useTheme} from "next-themes";
 import{SunIcon ,MoonIcon} from "@heroicons/react/solid";
 import {useState, useEffect} from "react";
+import { useTranslation } from "next-i18next";
 
 const drawerWidth = 240
-const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
 
 export default function DrawerAppBar(props) {
+
+    const {t} =  useTranslation('common')
+    const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
 
     const {systemTheme , theme, setTheme} = useTheme ();
     const [mounted, setMounted] = useState(false);
@@ -67,7 +68,7 @@ export default function DrawerAppBar(props) {
     };
   
     const drawer = (
-      <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Box className='text-black dark:text-gray-50 dark:bg-zinc-900' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <Typography variant="h6" sx={{ my: 2 }}>
           Logo place
         </Typography>
@@ -90,66 +91,67 @@ export default function DrawerAppBar(props) {
         <>
        
             <header className='bg-white shadow-sm dark:bg-zinc-900'>
-            <Toolbar>
+              <Toolbar>
 
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' } }}
-              >
-                <MenuIcon />
-              </IconButton>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                  <MenuIcon />
+                </IconButton>
 
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-              >
-                Logo places
-              </Typography>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                >
+                  Logo places
+                </Typography>
 
-              <Box>
-                {renderThemeChanger()}
-              </Box>
+                <Box>
+                  {renderThemeChanger()}
+                </Box>
 
-              <Box  sx={{ display: { xs: 'none', sm: 'block' } }}>
-                {navItems.map((item) => (
-                  <Button color="inherit" key={item} >
-                  {item}
-                  </Button>
-                ))}
-              </Box>
+                <Box  sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  {navItems.map((item) => (
+                    <Button color="inherit" key={item} >
+                    {item}
+                    </Button>
+                  ))}
+                </Box>
 
-              <Divider orientation="vertical" variant="middle" flexItem />
+                <Divider className='dark:bg-gray-500' orientation="vertical" variant="middle" flexItem />
 
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              
-                <FormControl  sx={{ m: 1, minWidth: 120 }}>
-                  <Select
-                    value={lan}
-                    onChange={handleChange}
-                    displayEmpty
-                    inputProps={{ 'aria-label': 'Without label' }}
-                  >
-                    <MenuItem value="En">EN</MenuItem>
-                    <MenuItem value="FA">FA</MenuItem>
+                <Box>
+                
+                  <FormControl  sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                      value={lan}
+                      onChange={handleChange}
+                      displayEmpty
+                      inputProps={{ 'aria-label': 'Without label' }}
+                    >
+                      <MenuItem value="En">EN</MenuItem>
+                      <MenuItem value="FA">FA</MenuItem>
 
-                  </Select>
-                </FormControl>
-              
-              </Box>
-            </Toolbar>
+                    </Select>
+                  </FormControl>
+                
+                </Box>
+              </Toolbar>
             </header>
-            <Box component="nav">
+            <header className='bg-white shadow-sm dark:bg-zinc-900'>
             <Drawer
+              className='dark:bg-zinc-900'
                 container={container}
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
                 ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
+                keepMounted: true,
                 }}
                 sx={{
                 display: { xs: 'block', sm: 'none' },
@@ -158,10 +160,9 @@ export default function DrawerAppBar(props) {
             >
                 {drawer}
             </Drawer>
-            </Box>
+            </header>
             <Box component="main" sx={{ mt:5, p: 3 }}>
-            
-            <Login/>
+              <Login/>
             </Box>
             
       </>
@@ -170,9 +171,5 @@ export default function DrawerAppBar(props) {
   }
 
   DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+    window: PropTypes.func,
+  };
