@@ -8,7 +8,7 @@ const App = ({ Component, pageProps }) => {
     <ThemeProvider enableSystem={true} attribute="class">
       <Component {...pageProps} />
     </ThemeProvider>
-
+    
   )
 }
 
