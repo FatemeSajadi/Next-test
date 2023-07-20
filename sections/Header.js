@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import Login from "../components/LoginForm";
+import LanguageSwitcher from "../components/LanguageSwitcher.js";
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -23,6 +24,7 @@ import {useTheme} from "next-themes";
 import{SunIcon ,MoonIcon} from "@heroicons/react/solid";
 import {useState, useEffect} from "react";
 import { useTranslation } from "next-i18next";
+import {i18n } from '../next-i18next.config'
 
 const drawerWidth = 240
 
@@ -58,11 +60,7 @@ export default function DrawerAppBar(props) {
   
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false)
-    const [lan, setLan] = React.useState('En');
-  
-    const handleChange = (event) => {
-      setLan(event.target.value);
-    };
+
     const handleDrawerToggle = () => {
       setMobileOpen((prevState) => !prevState);
     };
@@ -126,19 +124,8 @@ export default function DrawerAppBar(props) {
                 <Divider className='dark:bg-gray-500' orientation="vertical" variant="middle" flexItem />
 
                 <Box>
-                
-                  <FormControl  sx={{ m: 1, minWidth: 120 }}>
-                    <Select
-                      value={lan}
-                      onChange={handleChange}
-                      displayEmpty
-                      inputProps={{ 'aria-label': 'Without label' }}
-                    >
-                      <MenuItem value="En">EN</MenuItem>
-                      <MenuItem value="FA">FA</MenuItem>
+                <LanguageSwitcher />
 
-                    </Select>
-                  </FormControl>
                 
                 </Box>
               </Toolbar>
