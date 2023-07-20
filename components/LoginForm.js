@@ -36,7 +36,6 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
     const { t } =  useTranslation('common')
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -70,7 +69,7 @@ export default function SignIn() {
 
                     <Box className="col-start-1 col-end-7 md:col-start-1 md:col-end-4">
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 4 }}>
-                            <FormControl className='dark:outline-gray-500' fullWidth sx={{ mt: 1, mb:1 }}>
+                            <FormControl className='w-full dark:outline-gray-500' sx={{ mt: 1, mb:1 }}>
                                 <InputLabel className='dark:text-gray-500' htmlFor="outlined-adornment-email">{t('emaillabel')}</InputLabel>
                                 <OutlinedInput
                                     className='dark:text-gray-500'
@@ -79,7 +78,7 @@ export default function SignIn() {
                                     label={t('emaillabel')}
                                 />
                             </FormControl>
-                            <FormControl fullWidth sx={{ mt: 1, mb:1 }} variant="outlined">
+                            <FormControl className='w-full' sx={{ mt: 1, mb:1 }} variant="outlined">
                                 <InputLabel className='dark:text-gray-500' htmlFor="outlined-adornment-password">{t('passlabel')}</InputLabel>
                                 <OutlinedInput
                                     className='dark:text-gray-500'
@@ -115,10 +114,9 @@ export default function SignIn() {
                             </FormControl>
                             <ColorButton 
                                 type="submit"
-                                fullWidth
                                 variant="contained"
                                 sx={{ mt: 2, mb: 2 }}
-                                className="bg-amber-400"
+                                className="w-full bg-amber-400"
                             >
                                 {t('login')}
                             </ColorButton>
@@ -132,11 +130,11 @@ export default function SignIn() {
                             >
                                 {t('forgot')}
                             </Link>
-                            <Divider className='dark:bg-gray-500' sx={{ mt: 2}} fullWidth />
+                            <Divider className='dark:bg-gray-500 w-full	' sx={{ mt: 2}} />
                             <GoogleButton
-                                className='bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-50'
+                                className='w-full bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-50'
                                 type="submit"
-                                fullWidth
+                                
                                 variant="contained"
                                 startIcon={<FcGoogle/>}
                                 sx={{ mt: 3, mb: 2 }}
