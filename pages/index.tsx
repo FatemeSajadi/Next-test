@@ -12,7 +12,7 @@ export const getStaticProps = async ({ locale }) => ({
   },
 })
 
-export default function Home() {
+export default function Home(props) {
   return (
     <>
         <Layout/>
