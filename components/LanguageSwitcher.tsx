@@ -1,8 +1,10 @@
 
 import { useRouter } from 'next/router';
+import { useTranslation } from "next-i18next";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
+  const {t} =  useTranslation('common')
 
   return (
     <div>
@@ -18,8 +20,8 @@ export default function LanguageSwitcher() {
           )
         }
       >
-        <option value='en'>English</option>
-        <option value='fa'>Persian</option>
+        <option value='en'>{t('english')}</option>
+        <option value='fa'>{t('persian')}</option>
       </select>
     </div>
   );
