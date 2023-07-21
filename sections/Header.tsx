@@ -15,9 +15,6 @@ import {
   Toolbar,
   Typography,
   Button,
-  MenuItem,
-  FormControl,
-  Select
  } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import {useTheme} from "next-themes";
@@ -25,6 +22,7 @@ import{SunIcon ,MoonIcon} from "@heroicons/react/solid";
 import {useState, useEffect} from "react";
 import { useTranslation } from "next-i18next";
 import {i18n } from '../next-i18next.config'
+import { useRouter } from "next/router";
 
 
 interface Props {
@@ -35,8 +33,9 @@ const drawerWidth = 240
 
 export default function DrawerAppBar(props: Props) {
 
+    const router = useRouter();
     const {t} =  useTranslation('common')
-    const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
+    const navItems = [t('blog'), t('about'), t('pricing'), t('products')];
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false)
     const {systemTheme , theme, setTheme} = useTheme ();
@@ -49,6 +48,13 @@ export default function DrawerAppBar(props: Props) {
     useEffect(() =>{
       setMounted(true);
     },[])
+
+    useEffect(() => {
+      let dir = router.locale == "fa" ? "rtl" : "ltr";
+      let lang = router.locale == "fa" ? "fa" : "en";
+      document.querySelector("html").setAttribute("dir", dir);
+      document.querySelector("html").setAttribute("lang", lang);
+    }, [router.locale]);
   
      const renderThemeChanger= () => {
         if(!mounted) return null;
@@ -127,9 +133,7 @@ export default function DrawerAppBar(props: Props) {
                 <Divider className='dark:bg-gray-500' orientation="vertical" variant="middle" flexItem />
 
                 <Box>
-                <LanguageSwitcher />
-
-                
+                  <LanguageSwitcher />
                 </Box>
               </Toolbar>
             </header>
