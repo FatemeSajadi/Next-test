@@ -12,7 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import {Lock, Email, QrCode2} from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-import { yellow, grey,white} from '@mui/material/colors';
+import { yellow, grey} from '@mui/material/colors';
 import { FcGoogle } from 'react-icons/fc';
 import { useTranslation } from "next-i18next";
 
@@ -25,17 +25,18 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const GoogleButton = styled(Button)(({ theme }) => ({
-color: theme.palette.getContrastText(grey[200]),
-fontWeight: 500,
-'&:hover': {
-    backgroundColor: grey[300],
-},
+    color: theme.palette.getContrastText(grey[200]),
+    fontWeight: 500,
+    '&:hover': {
+        backgroundColor: grey[300],
+    },
 }));
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
     const { t } =  useTranslation('common')
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -44,6 +45,7 @@ export default function SignIn() {
         password: data.get('password'),
         });
     };
+
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -59,7 +61,6 @@ export default function SignIn() {
                 <Box
                 className="rounded shadow-md mt-3 p-3 md:p-5 
                 bg-zinc-50 dark:bg-zinc-900 grid gap-4"
-
                 >
                     <Box className="col-start-1 col-end-7">
                         <Typography component="h1" variant="h5">
@@ -69,7 +70,7 @@ export default function SignIn() {
 
                     <Box className="col-start-1 col-end-7 md:col-start-1 md:col-end-4">
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 4 }}>
-                            <FormControl className='w-full dark:outline-gray-500' sx={{ mt: 1, mb:1 }}>
+                            <FormControl className='w-full dark:outline-gray-500 my-2'>
                                 <InputLabel className='dark:text-gray-500' htmlFor="outlined-adornment-email">{t('emaillabel')}</InputLabel>
                                 <OutlinedInput
                                     className='dark:text-gray-500'
@@ -78,7 +79,7 @@ export default function SignIn() {
                                     label={t('emaillabel')}
                                 />
                             </FormControl>
-                            <FormControl className='w-full' sx={{ mt: 1, mb:1 }} variant="outlined">
+                            <FormControl className='w-full my-2' variant="outlined">
                                 <InputLabel className='dark:text-gray-500' htmlFor="outlined-adornment-password">{t('passlabel')}</InputLabel>
                                 <OutlinedInput
                                     className='dark:text-gray-500'
@@ -115,8 +116,7 @@ export default function SignIn() {
                             <ColorButton 
                                 type="submit"
                                 variant="contained"
-                                sx={{ mt: 2, mb: 2 }}
-                                className="w-full bg-amber-400"
+                                className="my-3 w-full bg-amber-400"
                             >
                                 {t('login')}
                             </ColorButton>
@@ -125,39 +125,32 @@ export default function SignIn() {
                                 href="#" 
                                 variant="body2" 
                                 underline="none" 
-                                fontWeight={500} 
-                                className="text-slate-400 dark:text-slate-500"
+                                className="font-medium text-slate-400 dark:text-slate-500"
                             >
                                 {t('forgot')}
                             </Link>
-                            <Divider className='dark:bg-gray-500 w-full	' sx={{ mt: 2}} />
+                            <Divider className='mt-3 mb-3 dark:bg-gray-500 w-full mt-2' />
                             <GoogleButton
-                                className='w-full bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-50'
-                                type="submit"
-                                
+                                className='mb-3 w-full bg-gray-50 text-gray-950 dark:bg-gray-950 dark:text-gray-50'
+                                type="submit"                              
                                 variant="contained"
                                 startIcon={<FcGoogle/>}
-                                sx={{ mt: 3, mb: 2 }}
                             >
                                 {t('google')}
                             </GoogleButton>
-                            <Typography
-                                className='text-slate-400 dark:text-slate-500'
-                                sx={{fontSize:15}}>
-                                    {t('acount')}
-                                <Link className='text-gray-950 dark:text-gray-50' href="#" variant="body2" underline="none" fontWeight={600} color={grey[900]}>
+                            <Typography className='text-base text-slate-400 dark:text-slate-500'>
+                                {t('acount')}
+                                <Link className='font-semibold text-gray-950 dark:text-gray-50' href="#" variant="body2" underline="none">
                                     {t('signup')}
                                 </Link>
                             </Typography>
-
                         </Box>
                     </Box>
 
                     <Box 
                     className=" col-start-1 col-end-7 md:col-end-7 md:col-span-3
                     flex flex-col justify-end items-center
-                    border rounded dark:border-gray-500	"
-                    sx={{ p:3, textAlign: 'center'}} 
+                    border rounded dark:border-gray-500	text-center p-4"
                     >
                         <QrCode2 className='text-9xl' />
                         <Typography variant="h5" >
