@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import Login from "../components/LoginForm";
-import LanguageSwitcher from "../components/LanguageSwitcher.js";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -26,16 +26,26 @@ import {useState, useEffect} from "react";
 import { useTranslation } from "next-i18next";
 import {i18n } from '../next-i18next.config'
 
+
+interface Props {
+
+  window?: () => Window;
+}
 const drawerWidth = 240
 
-export default function DrawerAppBar(props) {
+export default function DrawerAppBar(props: Props) {
 
     const {t} =  useTranslation('common')
     const navItems = ['Blog', 'About us', 'Pricing', 'Products'];
-
+    const { window } = props;
+    const [mobileOpen, setMobileOpen] = React.useState(false)
     const {systemTheme , theme, setTheme} = useTheme ();
     const [mounted, setMounted] = useState(false);
     
+    const handleDrawerToggle = () => {
+      setMobileOpen((prevState) => !prevState);
+    };
+
     useEffect(() =>{
       setMounted(true);
     },[])
@@ -57,13 +67,6 @@ export default function DrawerAppBar(props) {
           )
         }
      };
-  
-    const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false)
-
-    const handleDrawerToggle = () => {
-      setMobileOpen((prevState) => !prevState);
-    };
   
     const drawer = (
       <Box className='text-black dark:text-gray-50 dark:bg-zinc-900' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
